@@ -116,6 +116,7 @@ class Yank extends Operator
     type = if @motion.isLinewise?() then 'linewise' else 'character'
 
     @vimState.setRegister(@register, {text, type})
+    atom.clipboard.write(text)
 
     if @motion.isLinewise?()
       @editor.setCursorScreenPosition(originalPosition)
